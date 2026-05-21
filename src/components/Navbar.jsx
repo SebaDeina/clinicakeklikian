@@ -189,7 +189,7 @@ export default function Navbar() {
             <LanguageSwitcher />
           </div>
 
-          <ul className="hidden md:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center gap-8">
             {navLinks.map((l) => (
               <li key={l.href}>
                 <button type="button" onClick={() => handleLink(l.href)} className={`group ${desktopLinkClass(l.href)}`}>
@@ -199,7 +199,7 @@ export default function Navbar() {
             ))}
           </ul>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <button type="button" onClick={() => handleLink('#contacto')} className="btn-pink">
               {t.nav.contactanos}
             </button>
@@ -207,7 +207,7 @@ export default function Navbar() {
 
           <button
             type="button"
-            className="md:hidden p-2 text-white/90 hover:text-white transition-transform duration-300 active:scale-95"
+            className="lg:hidden p-2 text-white/90 hover:text-white transition-transform duration-300 active:scale-95"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-expanded={menuOpen}
             aria-label="Menú"
@@ -217,7 +217,7 @@ export default function Navbar() {
         </div>
 
         <div
-          className={`md:hidden grid overflow-hidden motion-reduce:transition-none transition-[grid-template-rows,opacity,border-radius] duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] ${
+          className={`lg:hidden grid overflow-hidden motion-reduce:transition-none transition-[grid-template-rows,opacity,border-radius] duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] ${
             scrolled ? 'rounded-b-2xl' : ''
           } ${
             menuOpen ? 'grid-rows-[1fr] opacity-100 border-t border-[#1e1c42] pointer-events-auto' : 'grid-rows-[0fr] opacity-0 border-t border-transparent pointer-events-none'

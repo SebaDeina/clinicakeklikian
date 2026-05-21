@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getWhatsAppConsultaOnlineUrl } from '../constants/whatsapp'
+import WhatsAppFloat from '../components/WhatsAppFloat'
 import { useLanguage } from '../context/LanguageContext'
 import { useRevealOnScroll, useReducedMotion } from '../hooks/useRevealOnScroll'
 import {
@@ -280,6 +281,8 @@ export default function ConsultasOnline() {
           </div>
         </RevealBlock>
       </div>
+
+      <WhatsAppFloat href={whatsappUrl} ariaLabel={p.whatsappAria} />
     </main>
   )
 }

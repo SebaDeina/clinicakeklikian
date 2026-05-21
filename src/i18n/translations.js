@@ -421,7 +421,9 @@ const translations = {
         button: "Agendar consulta online"
       },
       backHome: "Volver al inicio",
-      whatsappMessage: "Quiero agendar mi consulta online"
+      whatsappMessage:
+        "Hola, escribo desde la página de Consultas Online de la Clínica Dr. Keklikian. Quiero agendar mi consulta online.",
+      whatsappAria: "Contactar por WhatsApp desde Consultas Online"
     },
     footer: {
       tagline: "Estrés & Bienestar Integral",
@@ -854,7 +856,9 @@ const translations = {
         button: "Book online consultation"
       },
       backHome: "Back to home",
-      whatsappMessage: "I would like to book an online consultation"
+      whatsappMessage:
+        "Hello, I'm writing from the Online Consultations page on Dr. Keklikian's Clinic website. I would like to book an online consultation.",
+      whatsappAria: "Contact via WhatsApp from Online Consultations page"
     },
     footer: {
       tagline: "Stress & Integral Wellbeing",
@@ -1287,7 +1291,9 @@ const translations = {
         button: "Online-Konsultation vereinbaren"
       },
       backHome: "Zurück zur Startseite",
-      whatsappMessage: "Ich möchte eine Online-Konsultation vereinbaren"
+      whatsappMessage:
+        "Hallo, ich schreibe über die Seite Online-Konsultationen der Klinik Dr. Keklikian. Ich möchte eine Online-Konsultation vereinbaren.",
+      whatsappAria: "Per WhatsApp kontaktieren – Seite Online-Konsultationen"
     },
     footer: {
       tagline: "Stress & Ganzheitliches Wohlbefinden",

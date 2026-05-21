@@ -1,3 +1,5 @@
+import translations from '../i18n/translations.js'
+
 const WHATSAPP_PHONE = '34649603386'
 
 export function whatsappUrl(text) {
@@ -13,13 +15,10 @@ export function whatsappUrl(text) {
 /** Botón flotante del home */
 export const WHATSAPP_URL_HOME = whatsappUrl('hola')
 
-const WHATSAPP_CONSULTA_MESSAGES = {
-  es: 'Quiero agendar mi consulta online',
-  en: 'I would like to book an online consultation',
-  de: 'Ich möchte eine Online-Konsultation vereinbaren',
-}
-
-/** Agendar consulta online (mensaje según idioma) */
+/** Agendar consulta online — mensaje desde la página del nuevo servicio */
 export function getWhatsAppConsultaOnlineUrl(lang = 'es') {
-  return whatsappUrl(WHATSAPP_CONSULTA_MESSAGES[lang] ?? WHATSAPP_CONSULTA_MESSAGES.es)
+  const msg =
+    translations[lang]?.consultasOnlinePage?.whatsappMessage ??
+    translations.es.consultasOnlinePage.whatsappMessage
+  return whatsappUrl(msg)
 }

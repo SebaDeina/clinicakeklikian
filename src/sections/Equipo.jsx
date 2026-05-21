@@ -20,6 +20,9 @@ function cargoLinea(persona) {
   return persona.rol
 }
 
+const PANEL_BASE =
+  'absolute inset-x-0 bottom-0 z-10 flex flex-col items-center justify-center rounded-t-2xl rounded-b-[2rem] px-4 py-4 text-center transition-[transform,opacity] duration-300 ease-out max-lg:translate-y-0 max-lg:opacity-100 lg:pointer-events-none lg:translate-y-full lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:translate-y-0 lg:group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100'
+
 export default function Equipo() {
   const { t } = useLanguage()
   const s = t.equipo
@@ -54,20 +57,18 @@ export default function Equipo() {
                   />
                 ) : null}
 
-                {/* Recuadro inferior: visible en móvil; en desktop solo al hover */}
-                <div
-                  className="absolute inset-x-4 bottom-4 z-10 rounded-2xl px-4 py-5 text-center shadow-sm transition-all duration-300 ease-out max-lg:translate-y-0 max-lg:opacity-100 lg:pointer-events-none lg:translate-y-3 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:translate-y-0 lg:group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100"
-                  style={{ backgroundColor: INFO_BOX_BG }}
-                >
-                  <h3 className="text-base font-bold leading-snug text-[#1a164f]">{persona.nombre}</h3>
-                  <p className="mt-2 text-xs font-bold leading-snug text-[#1a164f]">{linea}</p>
+                <div className={PANEL_BASE} style={{ backgroundColor: INFO_BOX_BG }}>
+                  <h3 className="text-[15px] font-bold leading-snug text-[#1a164f]">{persona.nombre}</h3>
+                  <p className="mt-1.5 px-1 text-[11px] font-medium leading-snug text-[#1a164f]">
+                    {linea}
+                  </p>
                   {persona.email ? (
                     <a
                       href={`mailto:${persona.email}`}
-                      className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-[#1a164f] transition-colors hover:bg-[#1a164f]/10"
+                      className="mt-3 inline-flex text-[#1a164f] transition-opacity hover:opacity-70"
                       aria-label={`${persona.nombre}: ${persona.email}`}
                     >
-                      <Mail className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden />
+                      <Mail className="h-5 w-5" strokeWidth={1.5} aria-hidden />
                     </a>
                   ) : null}
                 </div>

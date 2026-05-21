@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-white text-gray-800 font-sans antialiased;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer components {
+  .btn-pink {
+    @apply inline-flex items-center justify-center gap-2 bg-[#e879a0] text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-[#c45980] hover:shadow-lg;
+  }
+
+  .btn-pink-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-[#e879a0] text-[#e879a0] px-5 py-2.5 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-[#e879a0] hover:text-white;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-[#0C008E] text-white px-6 py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:bg-[#08005e] hover:shadow-lg;
+  }
+
+  .section-tag {
+    @apply inline-block text-xs font-semibold uppercase tracking-widest text-[#e879a0] mb-4;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-gray-900 leading-tight;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl p-6 shadow-sm border border-gray-100 transition-shadow duration-200 hover:shadow-md;
+  }
+}

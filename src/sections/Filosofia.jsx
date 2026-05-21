@@ -48,14 +48,14 @@ export default function Filosofia() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-gray-200/90 pt-10 sm:mt-16">
-          <div className="flex flex-col divide-y divide-gray-200/90 sm:flex-row sm:items-center sm:justify-center sm:divide-y-0 sm:gap-2 md:gap-4">
+        <div className="mt-10 border-t border-gray-200/90 pt-6 sm:mt-16 sm:pt-10">
+          <div className="mx-auto flex max-w-md flex-col items-stretch divide-y divide-gray-200/90 sm:max-w-none sm:flex-row sm:items-center sm:justify-center sm:divide-y-0 sm:gap-2 md:gap-4">
             {f.introValues.map((item, i) => {
               const Icon = VALUE_ICONS[i] ?? Cog
               return (
                 <div
                   key={item.label}
-                  className={`flex items-center justify-center gap-3 py-5 sm:flex-1 sm:justify-center sm:py-6 sm:px-2 md:px-6 ${
+                  className={`flex items-center justify-center gap-3 py-4 sm:flex-1 sm:justify-center sm:py-6 sm:px-2 md:px-6 ${
                     i < f.introValues.length - 1 ? 'sm:border-r sm:border-gray-200/90' : ''
                   }`}
                 >

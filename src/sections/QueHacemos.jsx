@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -42,9 +43,34 @@ export default function QueHacemos() {
   const { lang, t } = useLanguage()
   const s = t.queHacemos
   const b = s.bannerConsultas
+  const sectionRef = useRef(null)
+  const [sectionInView, setSectionInView] = useState(false)
+  const [carouselEnabled, setCarouselEnabled] = useState(false)
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 768px)')
+    const apply = () => setCarouselEnabled(mq.matches)
+    apply()
+    mq.addEventListener('change', apply)
+    return () => mq.removeEventListener('change', apply)
+  }, [])
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+
+    const obs = new IntersectionObserver(
+      ([entry]) => setSectionInView(entry.isIntersecting),
+      { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
   const { activeIndex, progress, reducedMotion, goTo } = useAutoAdvance(
     s.servicios.length,
-    AUTO_INTERVAL_MS
+    AUTO_INTERVAL_MS,
+    { enabled: sectionInView && carouselEnabled }
   )
 
   const gridColumns = s.servicios
@@ -52,7 +78,11 @@ export default function QueHacemos() {
     .join(' ')
 
   return (
-    <section id="que-hacemos" className="scroll-mt-28 relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24">
+    <section
+      ref={sectionRef}
+      id="que-hacemos"
+      className="scroll-mt-28 relative overflow-hidden bg-white py-16 sm:py-20 lg:py-24"
+    >
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
           <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
@@ -85,12 +115,12 @@ export default function QueHacemos() {
                   i > 0 ? 'border-l border-gray-200' : ''
                 } ${isActive ? 'bg-white px-6 lg:px-8' : 'bg-slate-50/40 px-3 hover:bg-slate-50/70 lg:px-4'}`}
               >
-                {isActive && (
-                  <span
-                    className="absolute left-0 top-0 bottom-0 w-[3px] bg-[#0C008E]"
-                    aria-hidden
-                  />
-                )}
+                <ProgressBar
+                  active={isActive}
+                  progress={progress}
+                  reducedMotion={reducedMotion}
+                  orientation="vertical"
+                />
                 <span
                   className={`font-light leading-none tracking-tight transition-all duration-[550ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
                     isActive ? 'text-3xl lg:text-4xl' : 'text-2xl lg:text-3xl'
@@ -109,7 +139,6 @@ export default function QueHacemos() {
                   {serv.titulo}
                 </h3>
                 {isActive && <ServicioContenido key={activeIndex} serv={serv} index={i} />}
-                <ProgressBar active={isActive} progress={progress} reducedMotion={reducedMotion} />
               </button>
             )
           })}

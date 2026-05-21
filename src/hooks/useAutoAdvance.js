@@ -1,11 +1,12 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 
 const TICK_MS = 50
 
-export function useAutoAdvance(count, intervalMs = 6000) {
+export function useAutoAdvance(count, intervalMs = 6000, { enabled = true } = {}) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [progress, setProgress] = useState(0)
   const [reducedMotion, setReducedMotion] = useState(false)
+  const wasEnabledRef = useRef(enabled)
 
   const goTo = useCallback((index) => {
     setActiveIndex(index)
@@ -21,7 +22,22 @@ export function useAutoAdvance(count, intervalMs = 6000) {
   }, [])
 
   useEffect(() => {
-    if (reducedMotion || count < 1) return undefined
+    if (!enabled) {
+      setActiveIndex(0)
+      setProgress(0)
+      wasEnabledRef.current = false
+      return
+    }
+
+    if (!wasEnabledRef.current) {
+      setActiveIndex(0)
+      setProgress(0)
+    }
+    wasEnabledRef.current = true
+  }, [enabled])
+
+  useEffect(() => {
+    if (reducedMotion || count < 1 || !enabled) return undefined
 
     setProgress(0)
     const startedAt = Date.now()
@@ -37,7 +53,7 @@ export function useAutoAdvance(count, intervalMs = 6000) {
     }, TICK_MS)
 
     return () => clearInterval(tick)
-  }, [activeIndex, reducedMotion, count, intervalMs])
+  }, [activeIndex, reducedMotion, count, intervalMs, enabled])
 
   return { activeIndex, progress, reducedMotion, goTo }
 }

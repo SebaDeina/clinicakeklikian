@@ -14,6 +14,12 @@ const FOTO_POR_NOMBRE = {
 
 const INFO_BOX_BG = '#B7CCFB'
 
+function cargoLinea(persona) {
+  if (persona.cargo) return persona.cargo
+  if (persona.especialidad) return `${persona.rol} – ${persona.especialidad}`
+  return persona.rol
+}
+
 export default function Equipo() {
   const { t } = useLanguage()
   const s = t.equipo
@@ -30,14 +36,12 @@ export default function Equipo() {
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-5">
           {s.miembros.map((persona) => {
             const foto = FOTO_POR_NOMBRE[persona.nombre]
-            const cargoLine = persona.especialidad
-              ? `${persona.rol} – ${persona.especialidad}`
-              : persona.rol
+            const linea = cargoLinea(persona)
 
             return (
               <article
                 key={persona.nombre}
-                className="relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2rem] bg-[#e8e8ec] shadow-[0_8px_32px_rgba(26,22,79,0.08)] ring-1 ring-black/5 sm:max-w-none"
+                className="group relative mx-auto aspect-[3/4] w-full max-w-sm overflow-hidden rounded-[2rem] bg-[#e8e8ec] shadow-[0_8px_32px_rgba(26,22,79,0.08)] ring-1 ring-black/5 sm:max-w-none"
               >
                 {foto ? (
                   <img
@@ -50,26 +54,23 @@ export default function Equipo() {
                   />
                 ) : null}
 
+                {/* Recuadro inferior: visible en móvil; en desktop solo al hover */}
                 <div
-                  className="absolute inset-x-5 bottom-4 z-10 rounded-xl px-3 py-3 text-center shadow-sm sm:inset-x-4 sm:bottom-3 sm:px-3.5 sm:py-3.5"
+                  className="absolute inset-x-4 bottom-4 z-10 rounded-2xl px-4 py-5 text-center shadow-sm transition-all duration-300 ease-out max-lg:translate-y-0 max-lg:opacity-100 lg:pointer-events-none lg:translate-y-3 lg:opacity-0 lg:group-hover:pointer-events-auto lg:group-hover:translate-y-0 lg:group-hover:opacity-100 motion-reduce:translate-y-0 motion-reduce:opacity-100"
                   style={{ backgroundColor: INFO_BOX_BG }}
                 >
-                  <h3 className="text-sm font-bold leading-snug text-[#1a164f]">{persona.nombre}</h3>
-                  <p className="mt-1 text-[10px] font-medium leading-snug text-[#1a164f]/90 sm:text-[11px]">
-                    {cargoLine}
-                  </p>
+                  <h3 className="text-base font-bold leading-snug text-[#1a164f]">{persona.nombre}</h3>
+                  <p className="mt-2 text-xs font-bold leading-snug text-[#1a164f]">{linea}</p>
                   {persona.email ? (
                     <a
                       href={`mailto:${persona.email}`}
-                      className="mt-2.5 inline-flex h-8 w-8 items-center justify-center rounded-full text-[#1a164f] transition-colors hover:bg-[#1a164f]/10"
+                      className="mt-4 inline-flex h-9 w-9 items-center justify-center rounded-full text-[#1a164f] transition-colors hover:bg-[#1a164f]/10"
                       aria-label={`${persona.nombre}: ${persona.email}`}
                     >
-                      <Mail className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+                      <Mail className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden />
                     </a>
                   ) : null}
                 </div>
-
-                <p className="sr-only">{persona.descripcion}</p>
               </article>
             )
           })}

@@ -225,16 +225,16 @@ const translations = {
         },
         {
           nombre: "Estela Papalexiou",
-          rol: "Coordinadora del Centro",
-          especialidad: "Técnica en Evaluación Neurofisiológica",
+          rol: "Coordinadora del Centro y Técnica en Evaluación Neurofisiológica",
+          especialidad: "",
           email: "EstelaPapalexiou@clinicakeklikian.com",
           descripcion: "Especialista en la medición y análisis de las respuestas neurofisiológicas al estrés. Gestiona la coordinación clínica y asegura una experiencia de atención fluida y personalizada para cada paciente.",
           inicial: "EP"
         },
         {
           nombre: "Alexia Lazarides",
-          rol: "Especialista en Movimiento",
-          especialidad: "Evaluación Física y Terapias de Movimiento",
+          rol: "Especialista en Evaluación Física y Terapias de Movimiento",
+          especialidad: "",
           email: "AlexiaLazarides@clinicakeklikian.com",
           descripcion: "Trabaja en la dimensión física del estrés mediante evaluaciones corporales y text de movimiento que complementan el tratamiento médico y favorecen la regulación del sistema nervioso.",
           inicial: "AL"
@@ -658,16 +658,16 @@ const translations = {
         },
         {
           nombre: "Estela Papalexiou",
-          rol: "Centre Coordinator",
-          especialidad: "Neurophysiological Assessment Technician",
+          rol: "Centre Coordinator and Neurophysiological Assessment Technician",
+          especialidad: "",
           email: "EstelaPapalexiou@clinicakeklikian.com",
           descripcion: "Specialist in measuring and analysing neurophysiological stress responses. Manages clinical coordination and ensures a smooth, personalised care experience for each patient.",
           inicial: "EP"
         },
         {
           nombre: "Alexia Lazarides",
-          rol: "Movement Specialist",
-          especialidad: "Physical Assessment & Movement Therapies",
+          rol: "Specialist in Physical Assessment and Movement Therapies",
+          especialidad: "",
           email: "AlexiaLazarides@clinicakeklikian.com",
           descripcion: "Works on the physical dimension of stress through body assessments and movement therapies that complement medical treatment and promote nervous system regulation.",
           inicial: "AL"
@@ -1091,16 +1091,16 @@ const translations = {
         },
         {
           nombre: "Estela Papalexiou",
-          rol: "Zentrumsleiterin",
-          especialidad: "Fachkraft für neurophysiologische Beurteilung",
+          rol: "Zentrumsleiterin und Fachkraft für neurophysiologische Beurteilung",
+          especialidad: "",
           email: "EstelaPapalexiou@clinicakeklikian.com",
           descripcion: "Spezialistin auf die Messung und Analyse neurophysiologischer Stressreaktionen. Sie koordiniert die klinische Betreuung und sorgt für eine reibungslose, personalisierte Versorgung jedes Patienten.",
           inicial: "EP"
         },
         {
           nombre: "Alexia Lazarides",
-          rol: "Bewegungsspezialistin",
-          especialidad: "Körperliche Beurteilung & Bewegungstherapien",
+          rol: "Spezialistin für körperliche Beurteilung und Bewegungstherapien",
+          especialidad: "",
           email: "AlexiaLazarides@clinicakeklikian.com",
           descripcion: "Sie arbeitet an der körperlichen Dimension von Stress durch Körperbeurteilungen und Bewegungstherapien, die die medizinische Behandlung text und die Regulierung des Nervensystems fördern.",
           inicial: "AL"
